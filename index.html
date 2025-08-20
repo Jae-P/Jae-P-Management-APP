@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jae‑P Music Management App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="side-nav" aria-label="Primary">
+      <div class="brand">
+        <div class="logo">JP</div>
+        <div class="brand-text">
+          <div class="brand-name">Jae‑P</div>
+          <div class="brand-sub">Management APP</div>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-target="menu" title="Main Menu">
+          <span class="icon" aria-hidden="true">🏠</span><span class="label">Home</span>
+        </button>
+        <button class="nav-item" data-target="profile" title="Profile">
+          <span class="icon" aria-hidden="true">👤</span><span class="label">Profile</span>
+        </button>
+        <button class="nav-item" data-target="checklist" title="Checklist">
+          <span class="icon" aria-hidden="true">✅</span><span class="label">Checklist</span>
+        </button>
+        <button class="nav-item" data-target="publishing" title="Publishing">
+          <span class="icon" aria-hidden="true">🏢</span><span class="label">Publishing</span>
+        </button>
+        <button class="nav-item" data-target="copyright" title="Copyright">
+          <span class="icon" aria-hidden="true">©️</span><span class="label">Copyright</span>
+        </button>
+        <button class="nav-item" data-target="pro" title="PROs">
+          <span class="icon" aria-hidden="true">🎼</span><span class="label">PROs</span>
+        </button>
+        <button class="nav-item" data-target="distribution" title="Distribution">
+          <span class="icon" aria-hidden="true">🚀</span><span class="label">Distribution</span>
+        </button>
+        <button class="nav-item" data-target="freelance" title="Freelance">
+          <span class="icon" aria-hidden="true">🛠️</span><span class="label">Freelance</span>
+        </button>
+        <button class="nav-item" data-target="royalties" title="Royalties">
+          <span class="icon" aria-hidden="true">💿</span><span class="label">Royalties</span>
+        </button>
+        <button class="nav-item" data-target="contracts" title="Contracts">
+          <span class="icon" aria-hidden="true">📝</span><span class="label">Contracts</span>
+        </button>
+        <button class="nav-item" data-target="marketing" title="Marketing">
+          <span class="icon" aria-hidden="true">📣</span><span class="label">Marketing</span>
+        </button>
+        <button class="nav-item" data-target="consultation" title="Consultation">
+          <span class="icon" aria-hidden="true">💬</span><span class="label">Consult</span>
+        </button>
+      </nav>
+      <footer class="side-footer">
+        <small>© <span id="year"></span> Jae‑P</small>
+      </footer>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <h1 id="section-title">Main Menu</h1>
+      </header>
+
+      <!-- MAIN MENU -->
+      <section id="menu" class="panel active">
+        <div class="menu-grid">
+          <button class="card" data-target="profile">
+            <div class="card-icon">👤</div>
+            <h3>Profile</h3>
+            <p>Update your info, preferences, and portfolio.</p>
+          </button>
+          <button class="card" data-target="checklist">
+            <div class="card-icon">✅</div>
+            <h3>Release Checklist</h3>
+            <p>All tasks to finish before you drop a song.</p>
+          </button>
+          <button class="card" data-target="publishing">
+            <div class="card-icon">🏢</div>
+            <h3>Publishing Company</h3>
+            <p>Form your entity & register properly.</p>
+          </button>
+          <button class="card" data-target="copyright">
+            <div class="card-icon">©️</div>
+            <h3>Copyright</h3>
+            <p>Register your work with the U.S. Copyright Office.</p>
+          </button>
+          <button class="card" data-target="pro">
+            <div class="card-icon">🎼</div>
+            <h3>PROs (BMI/ASCAP)</h3>
+            <p>Register as songwriter & publisher.</p>
+          </button>
+          <button class="card" data-target="distribution">
+            <div class="card-icon">🚀</div>
+            <h3>Distribution</h3>
+            <p>Upload to platforms via CD Baby, DistroKid, etc.</p>
+          </button>
+          <button class="card" data-target="freelance">
+            <div class="card-icon">🛠️</div>
+            <h3>Freelance & Services</h3>
+            <p>Hire help on Fiverr for artwork, mixing & more.</p>
+          </button>
+          <button class="card" data-target="royalties">
+            <div class="card-icon">💿</div>
+            <h3>Royalties & Publishing</h3>
+            <p>SoundExchange, Songtrust & more.</p>
+          </button>
+          <button class="card" data-target="contracts">
+            <div class="card-icon">📝</div>
+            <h3>Contracts</h3>
+            <p>Collab & split sheets done right.</p>
+          </button>
+          <button class="card" data-target="marketing">
+            <div class="card-icon">📣</div>
+            <h3>Marketing & Promotion</h3>
+            <p>Canva, YouTube, TikTok & more.</p>
+          </button>
+          <button class="card highlight" data-target="consultation">
+            <div class="card-icon">💬</div>
+            <h3>Talk to Jae‑P</h3>
+            <p>Book premium 1‑on‑1 consultation.</p>
+          </button>
+        </div>
+      </section>
+
+      <!-- PROFILE (inspired by photo #1) -->
+      <section id="profile" class="panel">
+        <div class="profile-wrap">
+          <div class="profile-card glass">
+            <div class="avatar" aria-hidden="true"></div>
+            <h2>Profile settings</h2>
+            <ul class="profile-list">
+              <li>Personal info</li>
+              <li>Privacy & security</li>
+              <li>Preferences</li>
+              <li>Notifications</li>
+            </ul>
+            <div class="profile-actions">
+              <a class="btn subtle" href="#" role="button">Edit profile</a>
+              <a class="btn primary" href="#" role="button">View portfolio</a>
+            </div>
+          </div>
+          <div class="info-card">
+            <h3>Account</h3>
+            <div class="info-grid">
+              <label>Stage name</label><input id="stageName" placeholder="Jae‑P" />
+              <label>Email</label><input id="email" type="email" placeholder="you@example.com" />
+              <label>Website</label><input id="website" type="url" placeholder="https://"/>
+              <label>Timezone</label>
+              <select id="timezone">
+                <option value="PT">PT (Pacific)</option>
+                <option value="MT">MT (Mountain)</option>
+                <option value="CT">CT (Central)</option>
+                <option value="ET">ET (Eastern)</option>
+              </select>
+            </div>
+            <div class="profile-actions">
+              <button class="btn primary" id="saveProfile">Save</button>
+              <button class="btn subtle back">Back to Menu</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKLIST -->
+      <section id="checklist" class="panel">
+        <h2>Music Release Checklist</h2>
+        <div class="list">
+          <label><input type="checkbox" data-key="mix"> Mix & Master complete</label>
+          <label><input type="checkbox" data-key="artwork"> Artwork ready</label>
+          <label><input type="checkbox" data-key="metadata"> Final metadata (title, ISRC/UPC if available)</label>
+          <label><input type="checkbox" data-key="social"> Social profiles claimed & updated</label>
+          <div class="links-inline">
+            <a href="https://artists.spotify.com/home" target="_blank">Spotify For Artist</a>
+            <a href="https://artists.apple.com/" target="_blank">Apple Music for Artist</a>
+            <a href="https://amp.pandora.com/login" target="_blank">Pandora AMP</a>
+            <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+          </div>
+          <label><input type="checkbox" data-key="presskit"> EPK/press kit ready</label>
+          <label><input type="checkbox" data-key="preSave"> Pre‑save / pre‑order links created</label>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- PUBLISHING (hybrid nav like photo #2 but luxury colors) -->
+      <section id="publishing" class="panel">
+        <h2>Publishing Company Setup</h2>
+        <ol class="steps">
+          <li>Choose 2–3 name options (PROs often ask for alternates).</li>
+          <li>Register your business (DBA, LLC, or Corporation) with your state.</li>
+          <li>Get an EIN from the IRS.</li>
+          <li>Open a dedicated business bank account.</li>
+        </ol>
+        <div class="links">
+          <a target="_blank" href="https://www.irs.gov/businesses/small-businesses-self-employed/employer-id-numbers">Get an EIN (IRS)</a>
+          <a target="_blank" href="https://www.sba.gov/business-guide/launch-your-business">State & local registration guide (SBA)</a>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- COPYRIGHT -->
+      <section id="copyright" class="panel">
+        <h2>Copyright Registration</h2>
+        <p>Protect your work by registering your song or album.</p>
+        <div class="links">
+          <a href="https://www.copyright.gov/registration/" target="_blank">U.S. Copyright Office – Register</a>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- PROs -->
+      <section id="pro" class="panel">
+        <h2>Performance Rights Organizations (PROs)</h2>
+        <div class="links two-col">
+          <a href="https://www.bmi.com/join" target="_blank">Join BMI (writer & publisher)</a>
+          <a href="https://www.ascap.com/join" target="_blank">Join ASCAP (writer & publisher)</a>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- DISTRIBUTION -->
+      <section id="distribution" class="panel">
+        <h2>Distribution Platforms</h2>
+        <div class="cards grid-2">
+          <a class="link-card" href="https://www.cdbaby.com/" target="_blank">CD Baby</a>
+          <a class="link-card" href="https://distrokid.com/" target="_blank">DistroKid</a>
+          <a class="link-card" href="https://www.tunecore.com/" target="_blank">TuneCore</a>
+          <a class="link-card" href="https://www.unitedmasters.com/" target="_blank">UnitedMasters</a>
+          <a class="link-card" href="https://www.landr.com/" target="_blank">LANDR</a>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- FREELANCE -->
+      <section id="freelance" class="panel">
+        <h2>Freelance & Services</h2>
+        <div class="cards grid-2">
+          <a class="link-card" href="https://www.fiverr.com/" target="_blank">Fiverr</a>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- ROYALTIES -->
+      <section id="royalties" class="panel">
+        <h2>Royalty Collection & Publishing Administration</h2>
+        <div class="cards grid-2">
+          <a class="link-card" href="https://www.soundexchange.com/register/" target="_blank">SoundExchange</a>
+          <a class="link-card" href="https://app.songtrust.com/signup" target="_blank">Songtrust</a>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- CONTRACTS -->
+      <section id="contracts" class="panel">
+        <h2>Contracts & Agreements</h2>
+        <p>Draft collaboration agreements, producer agreements, and writer split sheets.</p>
+        <div class="links">
+          <a href="https://chat.openai.com" target="_blank">Use ChatGPT to draft agreements</a>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- MARKETING -->
+      <section id="marketing" class="panel">
+        <h2>Marketing & Promotion</h2>
+        <div class="cards grid-3">
+          <a class="link-card" href="https://www.canva.com/" target="_blank">Canva</a>
+          <a class="link-card" href="https://www.youtube.com/" target="_blank">YouTube</a>
+          <a class="link-card" href="https://vimeo.com/" target="_blank">Vimeo</a>
+          <a class="link-card" href="https://www.tiktok.com/" target="_blank">TikTok</a>
+          <a class="link-card" href="https://www.instagram.com/" target="_blank">Instagram</a>
+          <a class="link-card" href="https://www.facebook.com/" target="_blank">Facebook</a>
+        </div>
+        <div class="panel-actions">
+          <button class="btn subtle back">Back to Menu</button>
+        </div>
+      </section>
+
+      <!-- CONSULTATION -->
+      <section id="consultation" class="panel">
+        <h2>Premium Consultation – Talk to Jae‑P</h2>
+        <form id="consultForm" class="form">
+          <div class="form-row">
+            <label>Name</label>
+            <input required placeholder="Full name" name="name" />
+          </div>
+          <div class="form-row">
+            <label>Email</label>
+            <input required type="email" placeholder="you@example.com" name="email" />
+          </div>
+          <div class="form-row">
+            <label>Preferred Platform</label>
+            <select name="platform">
+              <option>FaceTime</option>
+              <option>Zoom</option>
+              <option>Phone</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Date & Time</label>
+            <input required type="datetime-local" name="datetime" />
+          </div>
+          <div class="form-row">
+            <label>Hourly rate (USD)</label>
+            <input required type="number" min="1" step="1" name="rate" placeholder="200" />
+          </div>
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Request Booking</button>
+            <button class="btn subtle back" type="button">Back to Menu</button>
+          </div>
+          <p class="note">Payment integration placeholder (Stripe/PayPal). Connect later.</p>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
