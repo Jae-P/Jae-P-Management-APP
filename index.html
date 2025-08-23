@@ -13,8 +13,8 @@
       <div class="brand">
         <div class="logo">JP</div>
         <div class="brand-text">
-          <div class="brand-name">Music Publishing Manager App™</div>
-          <div class="brand-sub">By Jae-P™</div>
+          <div class="brand-name">Jae-P™</div>
+          <div class="brand-sub">Management APP</div>
         </div>
       </div>
       <nav>
@@ -56,13 +56,16 @@
         </button>
       </nav>
       <footer class="side-footer">
-        <small>© <span id="year"></span> Music Publishing Manager App™</small>
+        <small>© <span id="year"></span> Jae-P™  Management APP</small>
       </footer>
     </aside>
 
     <main class="content">
       <header class="topbar">
         <h1 id="section-title">Main Menu</h1>
+        <div class="topbar-actions">
+          <button id="layoutToggle" class="btn subtle" title="Switch Layout">↔ Switch Layout</button>
+        </div>
       </header>
 
       <!-- MAIN MENU -->
@@ -127,48 +130,47 @@
       </section>
 
       <!-- PROFILE -->
-<section id="profile" class="panel">
-  <div class="profile-wrap">
-    <div class="profile-card glass">
-      <div class="avatar" aria-hidden="true">
-        <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Picture" />
-        <label for="profileUpload" class="upload-btn">📷 Upload</label>
-        <input type="file" id="profileUpload" accept="image/*" style="display:none;" />
-      </div>
-      <h2>Profile settings</h2>
-      <ul class="profile-list">
-        <li>Personal info</li>
-        <li>Privacy & security</li>
-        <li>Preferences</li>
-        <li>Notifications</li>
-      </ul>
-      <div class="profile-actions">
-        <a class="btn subtle" href="#" role="button">Edit profile</a>
-        <a class="btn primary" href="#" role="button">View portfolio</a>
-      </div>
-    </div>
-    <div class="info-card">
-      <h3>Account</h3>
-      <div class="info-grid">
-        <label>Stage name</label><input id="stageName" placeholder="Jae-P" />
-        <label>Email</label><input id="email" type="email" placeholder="you@example.com" />
-        <label>Website</label><input id="website" type="url" placeholder="https://"/>
-        <label>Timezone</label>
-        <select id="timezone">
-          <option value="PT">PT (Pacific)</option>
-          <option value="MT">MT (Mountain)</option>
-          <option value="CT">CT (Central)</option>
-          <option value="ET">ET (Eastern)</option>
-        </select>
-      </div>
-      <div class="profile-actions">
-        <button class="btn primary" id="saveProfile">Save</button>
-        <button class="btn subtle back">Back to Menu</button>
-      </div>
-    </div>
-  </div>
-</section>
-
+      <section id="profile" class="panel">
+        <div class="profile-wrap">
+          <div class="profile-card glass">
+            <div class="avatar" aria-hidden="true">
+              <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Picture" />
+              <label for="profileUpload" class="upload-btn">📷 Upload</label>
+              <input type="file" id="profileUpload" accept="image/*" style="display:none;" />
+            </div>
+            <h2>Profile settings</h2>
+            <ul class="profile-list">
+              <li>Personal info</li>
+              <li>Privacy & security</li>
+              <li>Preferences</li>
+              <li>Notifications</li>
+            </ul>
+            <div class="profile-actions">
+              <a class="btn subtle" href="#" role="button">Edit profile</a>
+              <a class="btn primary" href="#" role="button">View portfolio</a>
+            </div>
+          </div>
+          <div class="info-card">
+            <h3>Account</h3>
+            <div class="info-grid">
+              <label>Stage name</label><input id="stageName" placeholder="Jae-P" />
+              <label>Email</label><input id="email" type="email" placeholder="you@example.com" />
+              <label>Website</label><input id="website" type="url" placeholder="https://"/>
+              <label>Timezone</label>
+              <select id="timezone">
+                <option value="PT">PT (Pacific)</option>
+                <option value="MT">MT (Mountain)</option>
+                <option value="CT">CT (Central)</option>
+                <option value="ET">ET (Eastern)</option>
+              </select>
+            </div>
+            <div class="profile-actions">
+              <button class="btn primary" id="saveProfile">Save</button>
+              <button class="btn subtle back">Back to Menu</button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- CHECKLIST -->
       <section id="checklist" class="panel">
@@ -178,7 +180,6 @@
           <label><input type="checkbox" data-key="artwork"> Artwork ready</label>
           <label><input type="checkbox" data-key="metadata"> Final metadata (title, ISRC/UPC if available)</label>
           <label><input type="checkbox" data-key="social"> Social profiles claimed & updated</label>
-          <!-- MOVED LINKS OUT; ADDED MARKETING CHECKBOX -->
           <label><input type="checkbox" data-key="marketing"> Marketing</label>
           <label><input type="checkbox" data-key="presskit"> EPK/press kit ready</label>
           <label><input type="checkbox" data-key="preSave"> Pre-save / pre-order links created</label>
@@ -188,7 +189,7 @@
         </div>
       </section>
 
-      <!-- PUBLISHING (hybrid nav like photo #2 but luxury colors) -->
+      <!-- PUBLISHING -->
       <section id="publishing" class="panel">
         <h2>Publishing Company Setup</h2>
         <ol class="steps">
@@ -245,7 +246,7 @@
         </div>
       </section>
 
-      <!-- FREELANCE (UPDATED ONLY THIS PANEL) -->
+      <!-- FREELANCE -->
       <section id="freelance" class="panel">
         <h2>Freelance & Services</h2>
         <div class="cards grid-2">
@@ -294,9 +295,8 @@
           <a class="link-card" href="https://www.tiktok.com/" target="_blank">TikTok</a>
           <a class="link-card" href="https://www.instagram.com/" target="_blank">Instagram</a>
           <a class="link-card" href="https://www.facebook.com/" target="_blank">Facebook</a>
-          <!-- ADDED THESE THREE FROM CHECKLIST -->
-          <a class="link-card" href="https://artists.spotify.com/home" target="_blank">Spotify For Artist</a>
-          <a class="link-card" href="https://artists.apple.com/" target="_blank">Apple Music for Artist</a>
+          <a class="link-card" href="https://artists.spotify.com/home" target="_blank">Spotify for Artists</a>
+          <a class="link-card" href="https://artists.apple.com/" target="_blank">Apple Music for Artists</a>
           <a class="link-card" href="https://amp.pandora.com/login" target="_blank">Pandora AMP</a>
         </div>
         <div class="panel-actions">
