@@ -13,8 +13,8 @@
       <div class="brand">
         <div class="logo">JP</div>
         <div class="brand-text">
-          <div class="brand-name">Jae-P™</div>
-          <div class="brand-sub">Management APP</div>
+          <div class="brand-name">Music Publishing Manager App™</div>
+          <div class="brand-sub">By Jae-P™</div>
         </div>
       </div>
       <nav>
@@ -56,7 +56,7 @@
         </button>
       </nav>
       <footer class="side-footer">
-        <small>© <span id="year"></span> Jae-P™  Management APP</small>
+        <small>© <span id="year"></span> Music Publishing Manager App™</small>
       </footer>
     </aside>
 
@@ -126,44 +126,49 @@
         </div>
       </section>
 
-      <!-- PROFILE (inspired by photo #1) -->
-      <section id="profile" class="panel">
-        <div class="profile-wrap">
-          <div class="profile-card glass">
-            <div class="avatar" aria-hidden="true"></div>
-            <h2>Profile settings</h2>
-            <ul class="profile-list">
-              <li>Personal info</li>
-              <li>Privacy & security</li>
-              <li>Preferences</li>
-              <li>Notifications</li>
-            </ul>
-            <div class="profile-actions">
-              <a class="btn subtle" href="#" role="button">Edit profile</a>
-              <a class="btn primary" href="#" role="button">View portfolio</a>
-            </div>
-          </div>
-          <div class="info-card">
-            <h3>Account</h3>
-            <div class="info-grid">
-              <label>Stage name</label><input id="stageName" placeholder="Jae-P" />
-              <label>Email</label><input id="email" type="email" placeholder="you@example.com" />
-              <label>Website</label><input id="website" type="url" placeholder="https://"/>
-              <label>Timezone</label>
-              <select id="timezone">
-                <option value="PT">PT (Pacific)</option>
-                <option value="MT">MT (Mountain)</option>
-                <option value="CT">CT (Central)</option>
-                <option value="ET">ET (Eastern)</option>
-              </select>
-            </div>
-            <div class="profile-actions">
-              <button class="btn primary" id="saveProfile">Save</button>
-              <button class="btn subtle back">Back to Menu</button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- PROFILE -->
+<section id="profile" class="panel">
+  <div class="profile-wrap">
+    <div class="profile-card glass">
+      <div class="avatar" aria-hidden="true">
+        <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Picture" />
+        <label for="profileUpload" class="upload-btn">📷 Upload</label>
+        <input type="file" id="profileUpload" accept="image/*" style="display:none;" />
+      </div>
+      <h2>Profile settings</h2>
+      <ul class="profile-list">
+        <li>Personal info</li>
+        <li>Privacy & security</li>
+        <li>Preferences</li>
+        <li>Notifications</li>
+      </ul>
+      <div class="profile-actions">
+        <a class="btn subtle" href="#" role="button">Edit profile</a>
+        <a class="btn primary" href="#" role="button">View portfolio</a>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3>Account</h3>
+      <div class="info-grid">
+        <label>Stage name</label><input id="stageName" placeholder="Jae-P" />
+        <label>Email</label><input id="email" type="email" placeholder="you@example.com" />
+        <label>Website</label><input id="website" type="url" placeholder="https://"/>
+        <label>Timezone</label>
+        <select id="timezone">
+          <option value="PT">PT (Pacific)</option>
+          <option value="MT">MT (Mountain)</option>
+          <option value="CT">CT (Central)</option>
+          <option value="ET">ET (Eastern)</option>
+        </select>
+      </div>
+      <div class="profile-actions">
+        <button class="btn primary" id="saveProfile">Save</button>
+        <button class="btn subtle back">Back to Menu</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <!-- CHECKLIST -->
       <section id="checklist" class="panel">
