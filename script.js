@@ -1,78 +1,143 @@
-// Basic SPA navigation + checklist persistence
-const byId = id => document.getElementById(id);
-const panels = [...document.querySelectorAll('.panel')];
-const navItems = [...document.querySelectorAll('.nav-item')];
-const menuCards = [...document.querySelectorAll('.card[data-target]')];
-const backButtons = [...document.querySelectorAll('.back')];
-const sectionTitle = document.getElementById('section-title');
-document.getElementById('year').textContent = new Date().getFullYear();
+// =========
+// Script for Jae‑P Music Management App
+// - Single-page navigation
+// - Layout switcher (side-nav <-> dashboard), persisted
+// - Profile avatar upload persisted to localStorage
+// - Profile fields persisted to localStorage
+// - Checklist persisted to localStorage
+// =========
 
-function showPanel(id){
-  panels.forEach(p=>p.classList.remove('active'));
-  const el = byId(id);
-  if(el){ el.classList.add('active'); sectionTitle.textContent = el.querySelector('h2')?.textContent || 'Main Menu'; }
-  navItems.forEach(b=>b.classList.toggle('active', b.dataset.target===id));
-  if(id==='menu') sectionTitle.textContent = 'Main Menu';
-  window.scrollTo({top:0, behavior:'smooth'});
-  localStorage.setItem('jp.last', id);
-}
-navItems.forEach(btn => btn.addEventListener('click', ()=>showPanel(btn.dataset.target)));
-menuCards.forEach(card => card.addEventListener('click', ()=>showPanel(card.dataset.target)));
-backButtons.forEach(btn => btn.addEventListener('click', ()=>showPanel('menu')));
+(function(){
+  const panels = document.querySelectorAll('.panel');
+  const navButtons = document.querySelectorAll('.nav-item');
+  const cards = document.querySelectorAll('.card[data-target]');
+  const backButtons = document.querySelectorAll('.back');
+  const sectionTitle = document.getElementById('section-title');
+  const yearEl = document.getElementById('year');
+  const layoutToggle = document.getElementById('layoutToggle');
 
-// Restore last section
-showPanel(localStorage.getItem('jp.last') || 'menu');
+  // Footer year
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
-// Checklist persistence
-document.querySelectorAll('#checklist input[type="checkbox"]').forEach(chk=>{
-  const key = 'jp.chk.'+chk.dataset.key;
-  chk.checked = localStorage.getItem(key) === '1';
-  chk.addEventListener('change', ()=> localStorage.setItem(key, chk.checked ? '1' : '0'));
-});
-
-// Profile save (minimal demo)
-const saveBtn = document.getElementById('saveProfile');
-if(saveBtn){
-  saveBtn.addEventListener('click', ()=>{
-    const stageName = document.getElementById('stageName').value || 'Jae‑P';
-    const email = document.getElementById('email').value || '';
-    const website = document.getElementById('website').value || '';
-    const tz = document.getElementById('timezone').value || '';
-    const data = {stageName,email,website,tz};
-    localStorage.setItem('jp.profile', JSON.stringify(data));
-    alert('Profile saved.');
-  });
-  // load
-  const raw = localStorage.getItem('jp.profile');
-  if(raw){
-    try{
-      const d = JSON.parse(raw);
-      if(d.stageName) document.getElementById('stageName').value = d.stageName;
-      if(d.email) document.getElementById('email').value = d.email;
-      if(d.website) document.getElementById('website').value = d.website;
-      if(d.tz) document.getElementById('timezone').value = d.tz;
-    }catch{}
+  // Navigation handler
+  function activatePanel(id){
+    panels.forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById(id);
+    if(panel){ panel.classList.add('active'); }
+    sectionTitle.textContent = id === 'menu' ? 'Main Menu' : panel?.querySelector('h2')?.textContent || 'Section';
+    navButtons.forEach(b => b.classList.toggle('active', b.dataset.target === id));
+    // In dashboard layout, ensure there is a path back to menu via back buttons (already present)
   }
-}
 
-// Consult form (placeholder)
-const form = document.getElementById('consultForm');
-if(form){
-  form.addEventListener('submit', e=>{
-    e.preventDefault();
-    const obj = Object.fromEntries(new FormData(form).entries());
-    localStorage.setItem('jp.consult.last', JSON.stringify(obj));
-    alert('Thanks! We received your request. Payment integration coming next.');
-    showPanel('menu');
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => activatePanel(btn.dataset.target));
   });
-}
-document.getElementById("profileUpload").addEventListener("change", function (event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      document.getElementById("profileImage").src = e.target.result;
-    };
-    reader.readAsDataURL(file);
+  cards.forEach(card => {
+    card.addEventListener('click', () => activatePanel(card.dataset.target));
+  });
+  backButtons.forEach(btn => {
+    btn.addEventListener('click', () => activatePanel('menu'));
+  });
+
+  // ===== Layout toggle (persisted) =====
+  function applyLayoutFromStorage(){
+    const saved = localStorage.getItem('jp_layout') || 'side';
+    if(saved === 'dashboard'){
+      document.body.classList.add('layout-dashboard');
+      if(layoutToggle) layoutToggle.textContent = '↔ Switch to Side Layout';
+    }else{
+      document.body.classList.remove('layout-dashboard');
+      if(layoutToggle) layoutToggle.textContent = '↔ Switch Layout';
+    }
   }
-});
+  applyLayoutFromStorage();
+
+  if(layoutToggle){
+    layoutToggle.addEventListener('click', () => {
+      const isDashboard = document.body.classList.toggle('layout-dashboard');
+      localStorage.setItem('jp_layout', isDashboard ? 'dashboard' : 'side');
+      layoutToggle.textContent = isDashboard ? '↔ Switch to Side Layout' : '↔ Switch Layout';
+    });
+  }
+
+  // ===== Profile avatar upload (persisted) =====
+  const profileUpload = document.getElementById('profileUpload');
+  const profileImage = document.getElementById('profileImage');
+
+  function loadAvatar(){
+    const dataUrl = localStorage.getItem('jp_profile_image');
+    if(dataUrl && profileImage){
+      profileImage.src = dataUrl;
+    }
+  }
+  loadAvatar();
+
+  if(profileUpload && profileImage){
+    profileUpload.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = function(ev){
+        const dataUrl = ev.target.result;
+        profileImage.src = dataUrl;
+        try{
+          localStorage.setItem('jp_profile_image', dataUrl);
+        }catch(err){
+          console.warn('Could not store image in localStorage (maybe too large).', err);
+          alert('Image is too large to save for persistence. Consider a smaller file.');
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ===== Profile fields (persisted) =====
+  const profileFields = ['stageName','email','website','timezone'];
+  function loadProfile(){
+    profileFields.forEach(id => {
+      const el = document.getElementById(id);
+      const val = localStorage.getItem('jp_profile_'+id);
+      if(el && val !== null) el.value = val;
+    });
+  }
+  loadProfile();
+
+  const saveProfileBtn = document.getElementById('saveProfile');
+  if(saveProfileBtn){
+    saveProfileBtn.addEventListener('click', () => {
+      profileFields.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) localStorage.setItem('jp_profile_'+id, el.value || '');
+      });
+      alert('Profile saved!');
+    });
+  }
+
+  // ===== Checklist (persisted) =====
+  const checklistInputs = document.querySelectorAll('#checklist input[type="checkbox"][data-key]');
+  function loadChecklist(){
+    checklistInputs.forEach(chk => {
+      const key = chk.getAttribute('data-key');
+      const stored = localStorage.getItem('jp_check_'+key);
+      if(stored !== null) chk.checked = stored === '1';
+      chk.addEventListener('change', () => {
+        localStorage.setItem('jp_check_'+key, chk.checked ? '1' : '0');
+      });
+    });
+  }
+  loadChecklist();
+
+  // ===== Consultation form (demo submit) =====
+  const consultForm = document.getElementById('consultForm');
+  if(consultForm){
+    consultForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(consultForm));
+      alert(`Thanks ${data.name}! We'll reach out at ${data.email} to confirm your ${data.platform} session on ${data.datetime} at $${data.rate}/hr.`);
+      consultForm.reset();
+    });
+  }
+
+  // Start at menu on load
+  activatePanel('menu');
+})();
